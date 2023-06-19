@@ -1,2 +1,2 @@
-# oasis-os
+# Oasis
 webos successor to oasis
