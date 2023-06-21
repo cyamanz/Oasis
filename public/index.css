@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist");
+
+/* color: rgb(235, 235, 235), old background #0d0905 */
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes text {
+  0% {
+    background: linear-gradient(
+      var(--angle),
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+    accent-color: rgba(89, 255, 161, 0.75);;
+    --angle: 0deg;
+  }
+
+  50% {
+    accent-color: rgba(164, 144, 255, 0.75);
+    text-shadow: 0 0 10px rgba(164, 144, 255, 0.75);
+    --angle: 180deg;
+  }
+
+  100% {
+    text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+    accent-color: rgba(89, 255, 161, 0.75);
+    background: linear-gradient(
+      var(--angle),
+      rgba(89, 255, 161, 0.75),
+      rgba(164, 144, 255, 0.75),
+      rgba(46, 171, 255, 0.75)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    --angle: 360deg;
+  }
+}
+
+@keyframes transLine {
+  0% {
+    top: calc(60% + 55px);
+    left: calc(50% - 105px);
+  }
+
+  50% {
+    top: calc(60% + 55px);
+    left: calc(50% + 105px);
+  }
+
+  100% {
+    top: calc(60% + 55px);
+    left: calc(50% - 105px);
+  }
+}
+
+h1 {
+  display: inline;
+  color: white;
+  font-size: 48px;
+  font-weight:lighter;
+}
+
+h2 {
+  display: inline;
+  color: white;
+  font-size: 36px;
+  font-weight:lighter;
+}
+
+h3 {
+  display: inline;
+  color: white;
+  font-size: 24px;
+}
+
+h4 {
+  display: inline;
+  color: white;
+  font-size: 18px;
+}
+
+h5 {
+  display: inline;
+  color: white;
+  font-size: 11px;
+}
+
+h6 {
+  display: inline;
+  color: white;
+  font-size: 8px;
+}
+
+body,
+html {
+  font-family: "Urbanist", sans-serif;
+  margin:0;
+  padding:0;
+}
+
+body {
+  background: #0e0e0e;
+}
+
+.logo {
+  display: inline-block;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 35%;
+  left: 50%;
+  width: 550px;
+  height: 550px;
+}
+
+#startcontain {
+    transition:0.5s;
+}
+
+#line {
+  animation: transLine 1s ease-in-out infinite, vibebox 3s ease-in-out infinite;
+  animation-fill-mode: forwards;
+  position: absolute;
+  transition: 0.5s;
+  background: rgb(150, 233, 150);
+  background: linear-gradient(
+    45deg,
+    rgba(89, 255, 161, 0.75),
+    rgba(164, 144, 255, 0.75),
+    rgba(46, 171, 255, 0.75),
+    rgba(89, 255, 161, 0.75)
+  );
+  background-size: 300%;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  box-shadow: 0 0 10px rgba(46, 171, 255, 0.75);
+}
+
+#loadText {
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-align: center;
+  color: rgb(150, 233, 150);
+  animation: text 3s ease-in-out infinite;
+  transition: 0.5s;
+  text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+}
+
+.colorText {
+  display: inline;
+  color: rgb(150, 233, 150);
+  animation: text 3s ease-in-out infinite;
+  transition: 0.5s;
+  text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
+}
+
+.checkbox {
+  width: 25px;
+  height: 25px;
+  border: none;
+  transition:0.5s;
+  cursor:pointer;
+}
+
+#newuserui {
+  z-index: 10000;
+  margin-top: 10vh;
+  opacity:0;
+  transition:.5s;
+  text-align: center;
+  display:none;
+}
+
+#newusercontain {
+  text-align:center;
+  overflow-y: auto;
+}
+
+#skidLink {
+  text-decoration: none;
+  position: fixed;
+  left:20px;
+  top:20px;
+  color: white;
+}
+
+input:focus{
+  outline:none;
+}
