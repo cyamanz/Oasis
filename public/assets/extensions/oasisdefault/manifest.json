@@ -1,0 +1,13 @@
+{
+    "name": "Default Theme",
+    "version": "1.0.0",
+    "author": "code-alt",
+    "type": "theme",
+    "description": "The default theme for Oasis. Made by code-alt",
+    "data": {
+        "theme": {
+            "css": "theme.css",
+            "js": "theme.js"
+        }
+    }
+}

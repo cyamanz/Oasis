@@ -1,7 +1,7 @@
-// MADE BY CODE-ALT
-// this is the init script for oasis, it loads extensions and apps and stuff
+// made by code-alt
+// meant to start up oasis, clean up the startup screens and let the app load extensions and apps well
 
-import { loadExtensions } from "./tabs.mjs";
+import { startupExtensions } from "./tabs.mjs";
 
 const delay = 500;
 
@@ -19,13 +19,14 @@ const checkLocalStorage = () => {
 };
 
 const initOasis = () => {
+  id("loadText").innerText = "Loading Assets..."; // futureproofing, maybe oasis's icons need loading or something
   // init script - sees if user has used oasis before and/or has picked a version or has gone back to change settings
   if (checkLocalStorage() == false) {
     id("loadText").innerText =
       "LocalStorage/Cookies are not enabled, Oasis will not work.";
   }
   id("loadText").innerText = "Loading Apps/Extensions...";
-  loadExtensions()
+  startupExtensions()
     .then(() => {
       id("loadText").innerText = "Ready!";
       setTimeout(() => {

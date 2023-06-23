@@ -24,7 +24,12 @@
   <!-- <meta name="robots" content="noindex, nofollow"> - use this for every actual proxy site - -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="language" content="English">
-  <link rel="stylesheet" href="index.css" defer>
+  <link rel="stylesheet" href="initoasis.css" defer>
+  <script>
+    window.onerror = function (message, source, lineno, colno, error) {
+      alert(`Error: ${message}\nSource: ${source}\nLine: ${lineno}\nColumn: ${colno}`);
+    };
+  </script>
 </head>
 
 <body>
@@ -62,6 +67,12 @@
       </svg>
       </div>
     </div>
+  </div>
+  <div id="oasismain">
+    <div id="container">
+    </div>
+  </div>
+
   <script src="oasisinit.js" type="module"></script>
   <script src="tabs.mjs" type="module"></script>
   <script src="https://chii.liriliri.io/target.js"></script> <!-- chii for testing because -->
