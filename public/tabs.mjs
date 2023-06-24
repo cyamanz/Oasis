@@ -3,7 +3,12 @@
 
 // oasis v2.2.0 is real! will have have tabs that save to session storage, and will have extensions that can be loaded from a JSON file
 
-var preinstalledExtensions = ["/assets/extensions/oasisdefault/"];
+const preinstalledExtensions = ["/assets/extensions/oasisdefault/"]; // THE THEME MUST BE FIRST IN THE ARRAY
+
+export var loadedThemes = [];
+export var currentTheme = null;
+
+var totalFiles = 0;
 
 export const loadExtension = (link) => {
   let mlink =
@@ -32,8 +37,13 @@ export const loadExtension = (link) => {
         let _data = data.data;
         let type = data.type;
         if (type == "theme") {
+          var c = false;
+          var j = false;
+          let css;
+          let js;
           if (_data.theme.css) {
-            let css = document.createElement("link");
+            c = true;
+            css = document.createElement("link");
             css.rel = "stylesheet";
             css.href = rlink + "/" + _data.theme.css.replace(/^\//, "");
             css.addEventListener("load", () => {
@@ -42,12 +52,16 @@ export const loadExtension = (link) => {
                 resolve();
               }
             });
-            document.head.appendChild(css);
+            if (totalFiles == 0 && loadedThemes.length == 0) {
+              document.head.appendChild(css);
+            }
             numFiles++;
+            totalFiles++;
           }
           // now do this with js
           if (_data.theme.js) {
-            let js = document.createElement("script");
+            j = true;
+            js = document.createElement("script");
             js.src = rlink + "/" + _data.theme.js.replace(/^\//, "");
             js.addEventListener("load", () => {
               numLoaded++;
@@ -55,8 +69,46 @@ export const loadExtension = (link) => {
                 resolve();
               }
             });
-            document.head.appendChild(js);
+            if (totalFiles == 1 && loadedThemes.length == 0) {
+              document.head.appendChild(js);
+            }
             numFiles++;
+            totalFiles++;
+          }
+
+          if (
+            (c == false && j == false && numFiles == 0) ||
+            (c == true && j == false && numFiles == 1) ||
+            (c == false && j == true && numFiles == 1) ||
+            (c == true && j == true && numFiles == 2)
+          ) {
+            if (loadedThemes.length == 0) {
+              currentTheme = {
+                name: name,
+                version: version,
+                author: author,
+                description: data.description,
+                data: {
+                  theme: {
+                    css: css,
+                    js: js,
+                  },
+                },
+              };
+            } else {
+              loadedThemes.push({
+                name: name,
+                version: version,
+                author: author,
+                description: data.description,
+                data: {
+                  theme: {
+                    css: css,
+                    js: js,
+                  },
+                },
+              });
+            }
           }
         } else if (type == "extension") {
           return; // this for later!
@@ -71,8 +123,8 @@ export const loadExtension = (link) => {
 export const startupExtensions = async () => {
   return new Promise((resolve, reject) => {
     if (preinstalledExtensions) {
-      preinstalledExtensions.forEach((extension) => {
-        loadExtension(extension);
+      preinstalledExtensions.forEach(async (extension) => {
+        await loadExtension(extension); // protip use await it looks nicer than .then()
       });
     }
 

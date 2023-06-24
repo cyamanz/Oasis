@@ -19,20 +19,20 @@ const checkLocalStorage = () => {
 };
 
 const initOasis = () => {
-  id("loadText").innerText = "Loading Assets..."; // futureproofing, maybe oasis's icons need loading or something
+  id("oasis_core_loadText").innerText = "Loading Assets..."; // futureproofing, maybe oasis's icons need loading or something
   // init script - sees if user has used oasis before and/or has picked a version or has gone back to change settings
   if (checkLocalStorage() == false) {
-    id("loadText").innerText =
+    id("oasis_core_loadText").innerText =
       "LocalStorage/Cookies are not enabled, Oasis will not work.";
   }
-  id("loadText").innerText = "Loading Apps/Extensions...";
+  id("oasis_core_loadText").innerText = "Loading Apps/Extensions...";
   startupExtensions()
     .then(() => {
-      id("loadText").innerText = "Ready!";
+      id("oasis_core_loadText").innerText = "Ready!";
       setTimeout(() => {
-        id("start").style.opacity = 0;
+        id("oasis_core_start").style.opacity = 0;
         setTimeout(() => {
-          id("start").remove();
+          id("oasis_core_start").remove();
         }, 500);
       }, 500);
     })
@@ -42,7 +42,7 @@ const initOasis = () => {
 };
 
 window.onload = () => {
-  id("loadText").innerText = "Loading Oasis...";
+  id("oasis_core_loadText").innerText = "Loading Oasis...";
   window.setTimeout(() => {
     initOasis();
   }, delay); // short delay while oasis loads, then initOasis() is called. it's only for effect, but it's a nice effect. (github copilot wrote this comment)

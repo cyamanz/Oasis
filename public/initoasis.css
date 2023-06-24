@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist");
 
-/* color: rgb(235, 235, 235), old background #0d0905 */
-
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -61,44 +59,6 @@
   }
 }
 
-h1 {
-  display: inline;
-  color: white;
-  font-size: 48px;
-  font-weight:lighter;
-}
-
-h2 {
-  display: inline;
-  color: white;
-  font-size: 36px;
-  font-weight:lighter;
-}
-
-h3 {
-  display: inline;
-  color: white;
-  font-size: 24px;
-}
-
-h4 {
-  display: inline;
-  color: white;
-  font-size: 18px;
-}
-
-h5 {
-  display: inline;
-  color: white;
-  font-size: 11px;
-}
-
-h6 {
-  display: inline;
-  color: white;
-  font-size: 8px;
-}
-
 body,
 html {
   font-family: "Urbanist", sans-serif;
@@ -107,10 +67,10 @@ html {
 }
 
 body {
-  background: #6b6b6b;
+  background: #232323; /* easier on the eyes for when someone is making a theme and they mess something up */
 }
 
-#start {
+#oasis_core_start {
   /* modal that shows up at the start */
   z-index: 1000;
   position: fixed;
@@ -123,7 +83,7 @@ body {
   display:block;
 }
 
-.logo {
+#oasis_core_logo {
   display: inline-block;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -133,11 +93,11 @@ body {
   height: 550px;
 }
 
-#startcontain {
+#oasis_core_startcontain {
     transition:0.5s;
 }
 
-#line {
+#oasis_core_line {
   animation: transLine 1s ease-in-out infinite, vibebox 3s ease-in-out infinite;
   animation-fill-mode: forwards;
   position: absolute;
@@ -158,7 +118,7 @@ body {
   box-shadow: 0 0 10px rgba(46, 171, 255, 0.75);
 }
 
-#loadText {
+#oasis_core_loadText {
   z-index: 1000;
   position: absolute;
   width: 100%;
@@ -173,44 +133,10 @@ body {
   text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
 }
 
-.colorText {
+.colorText { /* for your convience */
   display: inline;
   color: rgb(150, 233, 150);
   animation: text 3s ease-in-out infinite;
   transition: 0.5s;
   text-shadow: 0 0 10px rgba(89, 255, 161, 0.75);
-}
-
-.checkbox {
-  width: 25px;
-  height: 25px;
-  border: none;
-  transition:0.5s;
-  cursor:pointer;
-}
-
-#newuserui {
-  z-index: 10000;
-  margin-top: 10vh;
-  opacity:0;
-  transition:.5s;
-  text-align: center;
-  display:none;
-}
-
-#newusercontain {
-  text-align:center;
-  overflow-y: auto;
-}
-
-#skidLink {
-  text-decoration: none;
-  position: fixed;
-  left:20px;
-  top:20px;
-  color: white;
-}
-
-input:focus{
-  outline:none;
 }

@@ -1,9 +1,83 @@
-body, html {
-    background-color: #ff0000;
-    color: #000;
-    font-family: "Urbanist", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
+:root {
+  /* easy values that will have most of what you want, anyways... */
+  --background: #0e0e0e;
+  --sidebars: #1b1b1b;
+  --text: #fff;
+  --searchbar: #202020;
+  --searchbarText: #fff;
+  --searchbarPlaceholder: #7d7d7d;
+  --searchbarBorder: #0e0e0e;
+  --font: "Urbanist", sans-serif;
 }
-/* WOOAAA EXTENSIONS WORK */
+
+#background {
+  background: var(--background);
+  color: var(--text);
+}
+
+#container {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: var(--text);
+}
+
+#topBar {
+  /* TODO: topBar movement is deprecated in the WebOS */
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 64px; /* I don't recommend changing the topbar's height as it might mess the sidebars, but if you really want to and know how to make the rest (sidebars, search bar, icons, etc.) work, go for it! */
+  background: var(--sidebars);
+}
+
+#closeIcon {
+  width: 32px;
+  height: 32px;
+}
+
+#closeBtn {
+  position: absolute;
+  right: calc(0% - 500px);
+  top: 0;
+  right: 0;
+  height: 45px;
+  width: 45px;
+  background: var(--searchbar);
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  border: 0;
+  border-left: 3px solid var(--searchbarBorder);
+  transition: 0.2s;
+}
+
+#closeBtn:hover {
+  background: var(--searchbarBorder);
+}
+
+#searchBar {
+  left: 25%;
+  top: 8px;
+  width: 50%;
+  height: 45px;
+  border-radius: 10px;
+  background: var(--searchbar);
+  border: 3px solid var(--searchbarBorder);
+}
+
+#textContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  color: var(--searchbarText);
+  background: transparent;
+  border: 0;
+  outline: none;
+  padding: 0, 10px;
+  font-family: var(--font);
+}
